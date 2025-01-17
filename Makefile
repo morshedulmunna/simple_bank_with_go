@@ -22,5 +22,6 @@ sqlc:
 
 install_dependency: 
 	go mod tidy
-
+test:
+	go test -v -cover -short ./...
 .PHONY: postgres16 createdb dropdb migrateup migratedown sqlc
