@@ -23,6 +23,5 @@ SET balance = $2
 WHERE id = $1;
 
 -- name: DeleteAccount :one
-
 DELETE FROM accounts WHERE id = $1
 RETURNING *;
