@@ -12,7 +12,7 @@ import (
 var testQueries *Queries
 
 const (
-	dbSource = "postgresql://root:secrets@localhost:5432/simple_bank?sslmode=disable"
+	dbSource = "postgresql://root:secrets@localhost:5432/simple_bank_db?sslmode=disable"
 )
 
 func TestMain(m *testing.M) {
