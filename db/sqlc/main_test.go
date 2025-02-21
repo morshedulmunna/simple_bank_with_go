@@ -1,4 +1,4 @@
-package test
+package db
 
 import (
 	"context"
@@ -6,24 +6,20 @@ import (
 	"os"
 	"testing"
 
-	db "github.com/morshedulmunna/simple_bank/db/sqlc"
-
 	"github.com/jackc/pgx/v5/pgxpool"
+	_ "github.com/lib/pq"
 )
 
-var testQueries *db.Queries
-
-const (
-	dbSource = "postgresql://root:secret@localhost:5432/simple_bank_db?sslmode=disable"
-)
+var testQueries *Queries
 
 func TestMain(m *testing.M) {
+	dbSource := "postgresql://root:secret@localhost:5432/simple_bank_db?sslmode=disable"
 	conn, err := pgxpool.New(context.Background(), dbSource)
 	if err != nil {
 		log.Fatal("cannot connect to database:", err)
 	}
 	defer conn.Close()
 
-	testQueries = db.New(conn)
+	testQueries = New(conn)
 	os.Exit(m.Run())
 }

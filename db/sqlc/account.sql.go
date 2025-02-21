@@ -40,7 +40,6 @@ func (q *Queries) CreateAccount(ctx context.Context, arg CreateAccountParams) (A
 }
 
 const deleteAccount = `-- name: DeleteAccount :one
-
 DELETE FROM accounts WHERE id = $1
 RETURNING id, owner, balance, currency, created_at, updated_at
 `
